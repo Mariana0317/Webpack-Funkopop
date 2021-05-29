@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funkopop</title>
+<link href="css/style.css" rel="stylesheet"></head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand titulo text-uppercase fs-1" href="index.html">Funkopop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+              <a class="nav-link titulo" href="index.html"><i class="fas fa-store"></i> <span
+                  class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link titulo active" href="admin.html"><i class="fas fa-user-cog"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="container">
+    <section class="row">
+      <div class="col-10">
+        <h1 class="display-4 mt-3 letras">Administrar Productos</h1>
+      </div>
+      <div class="col-2">
+        <img src="img/batmanAdmin.jpg" class="w-100" alt="imagen de batman">
+      </div>
+    </section>
+    <section>
+      <hr>
+      <div class="container">
+        <article class="row my-3">
+          <div class="col-10">
+            <h4 class="text-center letras">Tabla de productos</h4>
+          </div>
+          <div class="col-2 text-right">
+            <button type="button" class="btn btn-dark text-monospace botonAgregar titulo float-end" data-toggle="modal"
+              data-target="#exampleModal">
+              Agregar
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <article class="table-responsive">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th class="titulo ">#</th>
+              <th class="titulo text-monospace ">Nombre</th>
+              <th class="titulo text-monospace">N. Serie</th>
+              <th class="titulo text-monospace">Categoria</th>
+              <th class="titulo text-monospace">Descripcion</th>
+              <th class="titulo text-monospace">Imagen</th>
+              <th class="titulo text-monospace">Precio</th>
+              <th class="titulo text-monospace">Opciones</th>
+            </tr>
+          </thead>
+          <tbody id="tablaFunko"></tbody>
+        </table>
+      </article>
+    </section>
+    
+  </main>
+
+
+  <footer class="bg-dark text-light text-center py-4 piecitos sticky-bottom">
+    <p class="titulo">&copy; Todos los derechos reservados</p>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-dark">
+          <h5 class="modal-title titulo" id="exampleModalLabel">Administracion de Productos</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <i class="fas fa-times eliminar"></i>
+          </button>
+        </div>
+        <div class="modal-body modal-form">
+          <form id="formProducto" onsubmit="">
+            <div class="form-group">
+              <label class="letras">Codigo</label>
+              <input type="text" id="codigo" class="form-control codigo" placeholder="Ej:156">
+            </div>
+            <div class="form-group">
+              <label class="letras">Nombre</label>
+              <input type="text" id="nombre" class="form-control nombre" placeholder="Ironman">
+
+            </div>
+            <div class="form-group">
+              <label class="letras">Numero de serie</label>
+              <input type="text" id="numSerie" class="form-control numSerie" placeholder="Ej:15645AGH">
+
+            </div>
+            <div class="form-group">
+              <label class="letras">Categoria</label>
+              <input type="text" id="categoria" class="form-control categoria" placeholder="Superheroe">
+
+            </div>
+            <div class="form-group">
+              <label class="letras">Descripcion</label>
+              <input type="text" id="descripcion" class="form-control descripcion" placeholder="Personaje de Marvel">
+            </div>
+
+            <div class="form-group">
+              <label class="letras">Precio</label>
+              <input type="number" id="precio" class="form-control precio" placeholder="6000">
+
+            </div>
+            <div class="form-group">
+              <label class="letras">Imagen</label>
+              <input type="text" id="imagen" class="form-control imagen" placeholder="Ej:ironman.png">
+            </div>
+            <button type="submit" class="btn btn-dark my-3 titulo">Enviar</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<script src="js/admin.js"></script></body>
+
+</html>

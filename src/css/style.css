@@ -1,0 +1,66 @@
+.card{
+    border-radius: 25px;
+    border: 1px solid rgb(245, 238, 238);
+    box-shadow: rgba(240, 181, 146, 0.911) 0px 2px 4px 0px, rgba(245, 193, 96, 0.32) 0px 2px 16px 0px;
+}
+.imagenCard{
+    box-shadow: rgba(243, 192, 149, 0.973) 0px 50px 100px -20px, rgba(247, 177, 156, 0.3) 0px 30px 60px -30px;
+}
+.carousel{
+    border-radius: 15px;
+    box-shadow: rgba(247, 190, 157, 0.993) 0px 50px 100px -20px, rgba(247, 194, 194, 0.3) 0px 30px 60px -30px, rgba(45, 235, 203, 0.35) 0px -2px 6px 0px inset;
+}
+#ffcb91
+.imagen{
+    border-radius: 25px;
+}
+.card {
+    border: none !important;
+    box-shadow: rgba(27, 23, 21, 0.911) 0px 2px 4px 0px,
+      rgba(245, 193, 96, 0.32) 0px 2px 16px 0px;
+  }
+  .imagenCard {
+    box-shadow: rgba(14, 8, 2, 0.973) 0px 50px 100px -20px,
+      rgba(29, 14, 14, 0.3) 0px 30px 60px -30px;
+  }
+  .carrusel {
+    border-radius: none;
+    box-shadow: rgba(43, 39, 39, 0.993) 0px 50px 100px -20px,
+      rgba(37, 11, 11, 0.3) 0px 30px 60px -30px,
+      rgba(2, 26, 22, 0.35) 0px -2px 6px 0px inset;
+  }
+  #ffcb91 .imagen {
+    border: none !important;
+  }
+  .titulo {
+    font-family: fantasy;
+    color: #ffefa1 !important;
+  }
+  
+  .letras {
+    font-family: fantasy;
+    
+  }
+  .modal-form {
+    background: #ffcb91;
+  }
+  .pies-modal {
+    background: #ffefa1;
+  }
+  .arriba {
+    background: #ffcb91;
+  }
+  .eliminar {
+    color: #ffcb91;
+  }
+  .editar {
+    color: #94ebcd;
+  }
+  .menu {
+    color: #ffefa1;
+  }
+  .titucard {
+    color: #52e0d0;
+    font-family: fantasy;
+    
+  }
