@@ -6,8 +6,7 @@ import "@fortawesome/fontawesome-free/js/all.min.js";
 
 let listaFunkos = [];
 //llamo a la funcion que me iguals el local storage con en el arrat
-
-
+leerProductos();
 //cramos la funcion para agregar un nuevo producto
 window.agregarFunko = function (event) {
   event.preventDefault();
@@ -31,12 +30,25 @@ window.agregarFunko = function (event) {
     precio,
     imagen
   );
-  
+  listaFunkos.push(nuevoFunko);
+  console.log(nuevoFunko);
   //guardamos en localstorage
- 
+localStorage.setItem("funkoKey", JSON.stringify(listaFunkos));
   //llamo a la funcion limpiar forumulario
-  
+  limpiarFormulario();
+  leerProductos();
 };
 //funcion que limpia el input
-
+function limpiarFormulario(){
+  let formulario = document.getElementById('formProducto');
+  formulario.reset();
+}
 //funcion que lee el arreglo del localstorage para que se guarden todos los productos y no se reemplazen
+function leerProductos(){
+  if(localStorage.length == 0){
+    let _listaFunkos = JSON.parse(localStorage.getItem("funkoKey"));
+    if(listaFunkos.length == 0){
+      listaFunkos = _listaFunkos;
+    }
+  }
+}
