@@ -45,7 +45,7 @@ window.agregarFunko = function () {
   $(modal).modal("hide");
 };
 //funcion que limpia el input
-function limpiarFormulario() {
+window.limpiarFormulario = function() {
   let formulario = document.getElementById("formProducto");
   formulario.reset();
   productoExiste = false;
