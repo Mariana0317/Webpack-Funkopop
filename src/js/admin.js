@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Funko from "./funko.js";
 import "@fortawesome/fontawesome-free/js/all.min.js";
 import $ from "jquery";
+import Swal from "sweetalert2";
 
 let listaFunkos = [];
 //llamo a la funcion que me iguals el local storage con en el arrat
@@ -43,13 +44,20 @@ window.agregarFunko = function () {
   //cerramos modal
   let modal = document.getElementById("exampleModal");
   $(modal).modal("hide");
+  //sweet Alert
+  Swal.fire(
+    "Se agrego el nuevo funko!",
+    "Tu producto se agrego exitosamente!",
+    "success"
+  );
 };
+
 //funcion que limpia el input
-window.limpiarFormulario = function() {
+window.limpiarFormulario = function () {
   let formulario = document.getElementById("formProducto");
   formulario.reset();
   productoExiste = false;
-}
+};
 //funcion que lee el arreglo del localstorage para que se guarden todos los productos y no se reemplazen
 function leerProductos() {
   if (localStorage.length > 0) {
@@ -74,13 +82,13 @@ function dibujarTabla(_listaFunkos) {
   let codHTML = "";
   for (let i in _listaFunkos) {
     codHTML = `<tr>
-   <th scope="row">${_listaFunkos[i].codigo}</th>
-  <td>${_listaFunkos[i].nombre}</td>
-  <td>${_listaFunkos[i].numSerie}</td>
-  <td>${_listaFunkos[i].categoria}</td>
-  <td>${_listaFunkos[i].descripcion}</td>
-  <td>${_listaFunkos[i].imagen}</td>
-  <td>${_listaFunkos[i].precio}</td>
+   <th class="letras text-monospace" scope="row">${_listaFunkos[i].codigo}</th>
+  <td class="letras text-monospace">${_listaFunkos[i].nombre}</td>
+  <td class="letras text-monospace ">${_listaFunkos[i].numSerie}</td>
+  <td class="letras text-monospace">${_listaFunkos[i].categoria}</td>
+  <td class="letras text-monospace">${_listaFunkos[i].descripcion}</td>
+  <td class="letras text-monospace">${_listaFunkos[i].imagen}</td>
+  <td class="letras text-monospace">${_listaFunkos[i].precio}</td>
   
 <td>
 <button type="button" class="btn btn-outline-success btn-sm"
@@ -112,14 +120,33 @@ window.borrarProducto = function (botonEliminar) {
   console.log(botonEliminar);
   if (localStorage.length > 0) {
     let _listaFunkos1 = JSON.parse(localStorage.getItem("funkoKey"));
-    let datosFiltrados = _listaFunkos1.filter(function (funkoItem) {
-      return funkoItem.codigo != botonEliminar.id;
+    Swal.fire({
+      title: "Estas seguro de eliminar el producto?",
+      text: "Esta acción es irreversible!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#6ddccf",
+      cancelButtonColor: "#ffcb91",
+      confirmButtonText: "Si, quiero borrarlo!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let datosFiltrados = _listaFunkos1.filter(function (funkoItem) {
+          return funkoItem.codigo != botonEliminar.id;
+        });
+        //actualizo el localStorage con el funko ya eliminado
+        localStorage.setItem("funkoKey", JSON.stringify(datosFiltrados));
+        //y vuelvo a pintar la tabla actualizada
+        leerProductos();
+        listaFunkos = datosFiltrados;
+        Swal.fire(
+          "Funko eliminado!",
+          "Su producto ha sido eliminado con exito.",
+          "success"
+        );
+      } else {
+        Swal.fire("Cancelado!", "Tu producto esta a salvo.", "info");
+      }
     });
-    //actualizo el localStorage con el funko ya eliminado
-    localStorage.setItem("funkoKey", JSON.stringify(datosFiltrados));
-    //y vuelvo a pintar la tabla actualizada
-    leerProductos();
-    listaFunkos = datosFiltrados;
   }
 };
 
@@ -127,7 +154,7 @@ window.borrarProducto = function (botonEliminar) {
 window.editarProducto = function (codigo) {
   console.log(codigo);
   let productoEncontrado = listaFunkos.find(function (itemProducto) {
-    return (itemProducto.codigo == codigo);//dos signos igual si o si sino no funciona
+    return itemProducto.codigo == codigo; //dos signos igual si o si sino no funciona
   });
   console.log(productoEncontrado);
   //cargar los datos en la ventana modal
@@ -146,8 +173,8 @@ window.editarProducto = function (codigo) {
 };
 
 //funcion para desabilitar editar el codigo
-function desabilitarCodigo(){
-  if(productoExiste == true){
+function desabilitarCodigo() {
+  if (productoExiste == true) {
     console.log(codigo);
   }
 }
@@ -159,6 +186,23 @@ window.agregarModificar = function (event) {
   if (productoExiste == false) {
     agregarFunko();
   } else {
+    Swal.fire({
+      title: "Seguro que quieres modificar el producto?",
+      text: "Esta acción es irreversible!",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#6ddccf",
+      cancelButtonColor: "#ffcb91",
+      confirmButtonText: "Si, quiero modificarlo!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          "Producto modificado!",
+          "Tu producto ha sido modificado con exito.",
+          "success"
+        );
+      }
+    });
     guardarProducto();
   }
 };
@@ -191,4 +235,11 @@ function guardarProducto() {
   //cerramos modal
   let modal = document.getElementById("exampleModal");
   $(modal).modal("hide");
+}
+
+//funcion ingresar tarea con enter
+function ingresarFunko(event) {
+  if (keyCode == 13) {
+    agregarFunko();
+  }
 }
