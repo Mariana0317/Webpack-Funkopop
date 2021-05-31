@@ -1,27 +1,27 @@
 .card{
     border-radius: 25px;
     border: 1px solid rgb(245, 238, 238);
-    box-shadow: rgba(240, 181, 146, 0.911) 0px 2px 4px 0px, rgba(245, 193, 96, 0.32) 0px 2px 16px 0px;
+    box-shadow: rgba(201, 86, 19, 0.911) 0px 2px 4px 0px, rgba(167, 111, 8, 0.32) 0px 2px 16px 0px;
 }
 .imagenCard{
-    box-shadow: rgba(243, 192, 149, 0.973) 0px 50px 100px -20px, rgba(247, 177, 156, 0.3) 0px 30px 60px -30px;
+    box-shadow: rgba(197, 98, 16, 0.973) 0px 50px 100px -20px, rgba(131, 39, 11, 0.3) 0px 30px 60px -30px;
 }
 .carousel{
     border-radius: 15px;
-    box-shadow: rgba(247, 190, 157, 0.993) 0px 50px 100px -20px, rgba(247, 194, 194, 0.3) 0px 30px 60px -30px, rgba(45, 235, 203, 0.35) 0px -2px 6px 0px inset;
+    box-shadow: rgba(26, 20, 16, 0.993) 0px 50px 100px -20px, rgba(247, 194, 194, 0.3) 0px 30px 60px -30px, rgba(12, 49, 43, 0.35) 0px -2px 6px 0px inset;
 }
-#ffcb91
+
 .imagen{
     border-radius: 25px;
 }
 .card {
     border: none !important;
-    box-shadow: rgba(27, 23, 21, 0.911) 0px 2px 4px 0px,
-      rgba(245, 193, 96, 0.32) 0px 2px 16px 0px;
+    box-shadow: rgba(99, 40, 11, 0.911) 0px 2px 4px 0px,
+      rgba(192, 131, 17, 0.32) 0px 2px 16px 0px;
   }
   .imagenCard {
-    box-shadow: rgba(14, 8, 2, 0.973) 0px 50px 100px -20px,
-      rgba(29, 14, 14, 0.3) 0px 30px 60px -30px;
+    box-shadow: rgba(128, 34, 6, 0.973) 0px 50px 100px -20px,
+      rgba(247, 95, 35, 0.3) 0px 30px 60px -30px;
   }
   .carrusel {
     border-radius: none;
@@ -39,6 +39,7 @@
   
   .letras {
     font-family: fantasy;
+    color: #110e0a;
     
   }
   .modal-form {
