@@ -14,16 +14,16 @@ let productoExiste = false;
 
 //cramos la funcion para agregar un nuevo producto
 window.agregarFunko = function () {
-  let codigo = document.querySelector(".codigo").value;
-  let nombre = document.querySelector(".nombre").value;
-  let numSerie = document.querySelector(".numSerie").value;
-  let categoria = document.querySelector(".categoria").value;
-  let descripcion = document.querySelector(".descripcion").value;
-  let imagen = document.querySelector(".imagen").value;
-  let precio = document.querySelector(".precio").value;
+  let codigo = document.querySelector("#codigo").value;
+  let nombre = document.querySelector("#nombre").value;
+  let numSerie = document.querySelector("#numSerie").value;
+  let categoria = document.querySelector("#categoria").value;
+  let descripcion = document.querySelector("#descripcion").value;
+  let imagen = document.querySelector("#imagen").value;
+  let precio = document.querySelector("#precio").value;
 
   //aqui validar formulario
-  validarForm();
+
   //vamos a crear un objeto a partir de la calse funko
   let nuevoFunko = new Funko(
     codigo,
@@ -158,26 +158,25 @@ window.editarProducto = function (codigo) {
   });
   console.log(productoEncontrado);
   //cargar los datos en la ventana modal
-  document.querySelector(".codigo").value = productoEncontrado.codigo;
-  document.querySelector(".nombre").value = productoEncontrado.nombre;
-  document.querySelector(".numSerie").value = productoEncontrado.numSerie;
-  document.querySelector(".categoria").value = productoEncontrado.categoria;
-  document.querySelector(".descripcion").value = productoEncontrado.descripcion;
-  document.querySelector(".imagen").value = productoEncontrado.imagen;
-  document.querySelector(".precio").value = productoEncontrado.precio;
+  document.querySelector("#codigo").value = productoEncontrado.codigo;
+  document.querySelector("#nombre").value = productoEncontrado.nombre;
+  document.querySelector("#numSerie").value = productoEncontrado.numSerie;
+  document.querySelector("#categoria").value = productoEncontrado.categoria;
+  document.querySelector("#descripcion").value = productoEncontrado.descripcion;
+  document.querySelector("#imagen").value = productoEncontrado.imagen;
+  document.querySelector("#precio").value = productoEncontrado.precio;
 
   let modal = document.querySelector("#exampleModal");
   $(modal).modal("show");
 
   productoExiste = true;
+  noBorrarCodigo(codigo);
 };
-
-//funcion para desabilitar editar el codigo
-/*function desabilitarCodigo() {
+function noBorrarCodigo(codigo) {
   if (productoExiste == true) {
-    console.log(codigo);
+    codigo.disable;
   }
-}*/
+}
 
 //funcion que se encarga de saber cuando es modo editar y cuando modo agregar nuevo producto
 window.agregarModificar = function (event) {
@@ -203,7 +202,7 @@ window.agregarModificar = function (event) {
         );
       }
     });
-    validarForm();
+    //validarForm();
     guardarProducto();
   }
 };
@@ -211,13 +210,13 @@ window.agregarModificar = function (event) {
 function guardarProducto() {
   console.log("gurado producto");
 
-  let codigo = document.querySelector(".codigo").value;
-  let nombre = document.querySelector(".nombre").value;
-  let numSerie = document.querySelector(".numSerie").value;
-  let categoria = document.querySelector(".categoria").value;
-  let descripcion = document.querySelector(".descripcion").value;
-  let imagen = document.querySelector(".imagen").value;
-  let precio = document.querySelector(".precio").value;
+  let codigo = document.querySelector("#codigo").value;
+  let nombre = document.querySelector("#nombre").value;
+  let numSerie = document.querySelector("#numSerie").value;
+  let categoria = document.querySelector("#categoria").value;
+  let descripcion = document.querySelector("#descripcion").value;
+  let imagen = document.querySelector("#imagen").value;
+  let precio = document.querySelector("#precio").value;
 
   for (let i in listaFunkos) {
     if (listaFunkos[i].codigo == codigo) {
@@ -238,21 +237,12 @@ function guardarProducto() {
   $(modal).modal("hide");
 }
 
-
 //funcion validar formulario
 
 window.validarForm = function (input) {
-  /* let codigo = document.querySelector(".codigo");
-  let nombre = document.querySelector(".nombre");
-  let numSerie = document.querySelector(".numSerie");
-  let categoria = document.querySelector(".categoria");
-  let descripcion = document.querySelector(".descripcion");
-  let imagen = document.querySelector(".imagen");
-  let precio = document.querySelector(".precio");*/
-
-  if (input.value === "") {
-    input.className = "form-control is invalid";
+  if (input.value == "") {
+    input.className = "form-control is-invalid";
   } else {
-    input.className = "form-control is valid";
+    input.className = "form-control is-valid";
   }
 };
